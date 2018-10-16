@@ -1,6 +1,7 @@
 
 package com.reactnativecommunity.webview;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,7 +9,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.webkit.ValueCallback;
@@ -158,7 +158,7 @@ public class RNCWebViewModule extends ReactContextBaseJavaModule implements Acti
       getCurrentActivity().startActivityForResult(chooserIntent, PICKER_LEGACY);
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   public boolean startPhotoPickerIntent(final ValueCallback<Uri[]> callback, final Intent intent, final String[] acceptTypes, final boolean allowMultiple) {
     filePathCallback = callback;
 
@@ -203,7 +203,7 @@ public class RNCWebViewModule extends ReactContextBaseJavaModule implements Acti
     return intent;
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   private Intent getFileChooserIntent(String[] acceptTypes, boolean allowMultiple) {
     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
     intent.addCategory(Intent.CATEGORY_OPENABLE);
